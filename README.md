@@ -7,26 +7,41 @@ qualquer editor.
 
 Funciona 100% no seu computador. Sem API, sem conta, sem custo.
 
-## Como usar (Windows)
+## Baixar (Windows)
 
-1. Instale o [Python](https://www.python.org/downloads/) (marque **Add python.exe to PATH**).
-2. Baixe este projeto (**Code → Download ZIP**) e extraia numa pasta.
-3. Dê dois cliques em **`COMECAR.bat`**. Na primeira vez ele instala o que falta.
-4. Siga os 3 passos da janela: **Vídeos** (escolha um ou vários) → **Ajustes** (opcional) → **Resultado**.
-   No passo 2, **Cortar e exportar** gera os clipes e **Só analisar** só mostra os tempos dos cortes.
-   Se o resultado não ficou bom, use **Ajustar e refazer** no passo 3.
+**[⬇ Baixar o Cortei.exe](../../releases/latest)**: abra o link, role até **Assets** e clique em
+`Cortei.exe`. Não precisa instalar nada nem ter Python. É só dar dois cliques.
+
+> Na primeira vez, o Windows pode mostrar "O Windows protegeu seu computador", porque o
+> programa não é assinado. Clique em **Mais informações → Executar assim mesmo**.
+> Alguns antivírus também reclamam de programas feitos com PyInstaller (falso positivo comum).
+
+**Atalho:** coloque o `Cortei.exe` numa pasta fixa (ex.: `Documentos\Cortei`), clique com o
+botão direito nele → **Mostrar mais opções → Enviar para → Área de trabalho (criar atalho)**.
+Também dá para fixar na barra de tarefas ou no Menu Iniciar.
+
+## Como usar
+
+1. Abra o Cortei e siga os 3 passos: **Vídeos** (escolha um ou vários) → **Ajustes** (opcional) → **Resultado**.
+2. No passo 2, **Cortar e exportar** gera os clipes e **Só analisar** só mostra os tempos dos cortes.
+3. Se o resultado não ficou bom, use **Ajustar e refazer** no passo 3.
 
 Os clipes saem numa pasta `<nome do vídeo>_cenas`, ao lado do vídeo
 (`video_cena_001.mp4`, `video_cena_002.mp4`...), junto com um `.txt` com os tempos.
+Depois é só importar os clipes no CapCut (ou em qualquer editor).
 
-### Gerar o `.exe` (para quem não quer instalar Python)
+## Para desenvolvedores
+
+### Rodar pelo código-fonte
+
+1. Instale o [Python](https://www.python.org/downloads/) (marque **Add python.exe to PATH**).
+2. Baixe o projeto (**Code → Download ZIP**) e extraia numa pasta.
+3. Dê dois cliques em **`COMECAR.bat`**. Na primeira vez ele instala o que falta.
+
+### Gerar o `.exe` você mesmo
 
 Dê dois cliques em **`CONSTRUIR_EXE.bat`**. Ele instala o PyInstaller e cria
 `dist\Cortei.exe`: um arquivo único que roda em qualquer Windows, sem Python.
-
-> O `.exe` não é assinado, então o Windows pode mostrar "O Windows protegeu seu
-> computador". Clique em **Mais informações → Executar assim mesmo**. Alguns antivírus
-> também reclamam de programas feitos com PyInstaller (falso positivo comum).
 
 ### Pela linha de comando
 
@@ -77,6 +92,10 @@ cada trecho. Sem rede neural: é só cálculo de imagem, rápido e local.
 - Gerar projeto do CapCut direto com a timeline cortada
 - Detecção por modelo de IA local (ex.: TransNetV2)
 
-## Licença
+## Licença e créditos
 
 MIT. Veja [LICENSE](LICENSE).
+
+O corte dos vídeos usa o [FFmpeg](https://ffmpeg.org/), distribuído junto pelo pacote
+[imageio-ffmpeg](https://github.com/imageio/imageio-ffmpeg). A interface usa o
+[CustomTkinter](https://github.com/TomSchimansky/CustomTkinter).
