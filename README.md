@@ -19,6 +19,15 @@ Funciona 100% no seu computador. Sem API, sem conta, sem custo.
 Os clipes saem numa pasta `<nome do vídeo>_cenas`, ao lado do vídeo
 (`video_cena_001.mp4`, `video_cena_002.mp4`...), junto com um `.txt` com os tempos.
 
+### Gerar o `.exe` (para quem não quer instalar Python)
+
+Dê dois cliques em **`CONSTRUIR_EXE.bat`**. Ele instala o PyInstaller e cria
+`dist\Cortei.exe`: um arquivo único que roda em qualquer Windows, sem Python.
+
+> O `.exe` não é assinado, então o Windows pode mostrar "O Windows protegeu seu
+> computador". Clique em **Mais informações → Executar assim mesmo**. Alguns antivírus
+> também reclamam de programas feitos com PyInstaller (falso positivo comum).
+
 ### Pela linha de comando
 
 ```bash
@@ -58,6 +67,8 @@ cada trecho. Sem rede neural: é só cálculo de imagem, rápido e local.
 
 - `cortei.py`: janela (CustomTkinter) e linha de comando
 - `motor.py`: detecção de cenas e exportação (sem interface, reutilizável)
+- `cortei.ico`: ícone do programa
+- `COMECAR.bat` / `CONSTRUIR_EXE.bat`: abrir o programa / gerar o `.exe`
 
 ## Ideias para o futuro
 

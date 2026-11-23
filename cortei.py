@@ -18,6 +18,12 @@ import motor
 
 NOME = "Cortei"
 
+
+def _recurso(nome):
+    """Caminho de um arquivo que acompanha o programa (funciona no .exe também)."""
+    base = getattr(sys, "_MEIPASS", os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base, nome)
+
 # Paleta (tema escuro)
 BG = "#0E1014"
 CARD = "#171A21"
@@ -43,6 +49,16 @@ def abrir_janela():
     root.title(NOME)
     root.geometry("720x680")
     root.minsize(660, 620)
+
+    def _icone():
+        try:
+            caminho = _recurso("cortei.ico")
+            if sys.platform.startswith("win") and os.path.exists(caminho):
+                root.iconbitmap(caminho)
+        except Exception:                                        # noqa
+            pass
+    # o CustomTkinter coloca o ícone padrão dele por volta de 200 ms; o nosso vem depois
+    root.after(300, _icone)
 
     arquivos = []
     fila = queue.Queue()

@@ -42,7 +42,7 @@ def info_video(ffmpeg, video):
     """Lê duração e fps do vídeo (via a saída de `ffmpeg -i`)."""
     p = subprocess.run(
         [ffmpeg, "-hide_banner", "-i", video],
-        stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
         creationflags=_SEM_JANELA,
     )
     txt = p.stderr.decode("utf-8", "replace")
@@ -84,7 +84,7 @@ def _calcular_pontuacoes(video, ffmpeg, fps, duracao, progresso=None, cancelar=N
         "-r", "%.5f" % fps, "-f", "rawvideo", "-pix_fmt", "rgb24", "-",
     ]
     proc = subprocess.Popen(
-        cmd, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
+        cmd, stdin=subprocess.DEVNULL, stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,
         creationflags=_SEM_JANELA,
     )
     tamanho = LARGURA * ALTURA * 3
@@ -276,7 +276,8 @@ def exportar(video, cortes, total_quadros, fps, pasta_saida, rapido=False,
                     "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "192k",
                     "-movflags", "+faststart"]
         cmd.append(saida)
-        r = subprocess.run(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+        r = subprocess.run(cmd, stdin=subprocess.DEVNULL,
+                           stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                            creationflags=_SEM_JANELA)
         if r.returncode != 0:
             raise RuntimeError("Erro do ffmpeg na cena %d:\n%s"

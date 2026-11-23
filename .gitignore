@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*_cenas/
+*.mp4
+*.mov
+.venv/
+venv/
+build/
+dist/
+*.spec
